@@ -1,48 +1,69 @@
-{/* THIS IS A DEMO SAMPLE WHILE THE APP IS SPINNING, PLEASE REPLACE IT COMPLETELY */}
+import Card from '@/components/ui/Card';
+import Input from '@/components/ui/Input';
+import Button from '@/components/ui/Button';
 
-import { TextShimmer } from "@/components/ui/TextShimmer";
-import { DidYouKnow } from "@/components/ui/DidYouKnow";
-import { SparklesCore } from "@/components/ui/Sparkles";
+const mockJobs = [
+  {
+    id: 1,
+    title: 'Senior Frontend Developer',
+    company: 'TechCorp',
+    location: 'Remote',
+    reward: '$2,000',
+  },
+  {
+    id: 2,
+    title: 'Product Manager',
+    company: 'InnovateLabs',
+    location: 'New York, USA',
+    reward: '$3,000',
+  },
+  {
+    id: 3,
+    title: 'DevOps Engineer',
+    company: 'CloudTech',
+    location: 'London, UK',
+    reward: '$2,500',
+  },
+];
 
-function App() {
+export default function HomePage() {
   return (
-    <div className="min-h-screen w-full bg-[#09090b] flex flex-col">
-      <div className="flex-1 flex flex-col items-center justify-center">
-        <div className="w-[40rem] h-40 relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-12 z-30">
-            <TextShimmer
-              className="font-mono text-base sm:text-lg"
-              duration={1.4}
-            >
-              Generating your app...
-            </TextShimmer>
-          </div>
+    <div className="space-y-8">
+      <section className="text-center space-y-4">
+        <h1 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+          Refer. Connect. Earn.
+        </h1>
+        <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          Help companies find great talent and earn rewards for successful referrals
+        </p>
+      </section>
 
-          {/* Gradients */}
-          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
-          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
-          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+      <section className="max-w-2xl mx-auto">
+        <Card className="flex gap-4">
+          <Input placeholder="Search jobs by title, company, or location" className="flex-1" />
+          <Button>Search</Button>
+        </Card>
+      </section>
 
-          <SparklesCore
-            background="transparent"
-            minSize={0.4}
-            maxSize={1}
-            particleDensity={1200}
-            className="w-full h-full"
-            particleColor="#FFFFFF"
-          />
-
-          {/* Radial Gradient */}
-          <div className="absolute inset-0 w-full h-full bg-[#09090b] [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
-        </div>
-      </div>
-
-      <div className="w-full max-w-lg mx-auto px-4 mb-8">
-        <DidYouKnow />
-      </div>
+      <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {mockJobs.map((job) => (
+          <Card key={job.id} className="space-y-4">
+            <div>
+              <h3 className="text-xl font-semibold text-white">{job.title}</h3>
+              <p className="text-gray-400">{job.company}</p>
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-gray-400">{job.location}</span>
+              <span className="text-blue-400 font-semibold">
+                Reward: {job.reward}
+              </span>
+            </div>
+            <Button variant="secondary" className="w-full">
+              Refer a Candidate
+            </Button>
+          </Card>
+        ))}
+      </section>
     </div>
   );
 }
-
-export default App;

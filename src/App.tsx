@@ -1,13 +1,15 @@
-import { RouterProvider } from "react-router-dom";
-import "./index.css";
-import { router } from "./routes";
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import HomePage from './pages';
+import NotFound from './pages/NotFound';
 
-const App = () => {
+export default function App() {
   return (
-    <div className="min-h-screen">
-      <RouterProvider router={router} />
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Layout>
   );
-};
-
-export default App;
+}
