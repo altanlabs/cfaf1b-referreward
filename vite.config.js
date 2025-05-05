@@ -1,7 +1,4 @@
 import { defineConfig } from 'vite';
-
-// DO NOT CHANGE '@vitejs/plugin-react-swc' if not the previews will stop working. 
-
 import react from '@vitejs/plugin-react-swc';
 import { VitePWA } from 'vite-plugin-pwa';
 import * as path from 'path';
@@ -74,6 +71,11 @@ export default defineConfig({
         if (warning.code === "ESLINT_ERROR") return;
         warn(warning);
       },
+    },
+  },
+  server: {
+    watch: {
+      usePolling: true,
     },
   },
 });
