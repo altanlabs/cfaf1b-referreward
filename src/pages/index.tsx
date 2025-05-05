@@ -2,6 +2,7 @@ import Card from '@/components/ui/Card';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import Select from '@/components/ui/Select';
+import { ShareIcon } from '@/components/icons/ShareIcon';
 
 const mockJobs = [
   {
@@ -41,6 +42,23 @@ const jobTypes = ['All Types', 'Full-time', 'Part-time', 'Contract'];
 const experienceLevels = ['All Levels', 'Junior', 'Mid-Level', 'Senior'];
 
 export default function HomePage() {
+  const handleShare = (job: typeof mockJobs[0]) => {
+    const shareData = {
+      title: `${job.title} at ${job.company}`,
+      text: `Check out this ${job.title} position at ${job.company}! Referral reward: ${job.reward}`,
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      navigator.share(shareData)
+        .catch((err) => console.log('Error sharing:', err));
+    } else {
+      navigator.clipboard.writeText(
+        `${shareData.title}\n${shareData.text}\n${shareData.url}`
+      );
+    }
+  };
+
   return (
     <div className="space-y-8">
       <section className="text-center space-y-4">
@@ -84,11 +102,23 @@ export default function HomePage() {
                 <img
                   src={job.logo}
                   alt={job.company}
-                  className="w-12 h-12 rounded-lg"
+                  className="w-12 h-12 rounded-md"
                 />
-                <div>
-                  <h3 className="text-xl font-semibold text-black">{job.title}</h3>
-                  <p className="text-black/60">{job.company}</p>
+                <div className="flex-1">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <h3 className="text-xl font-semibold text-black">{job.title}</h3>
+                      <p className="text-black/60">{job.company}</p>
+                    </div>
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      onClick={() => handleShare(job)}
+                      className="p-2"
+                    >
+                      <ShareIcon className="w-5 h-5" />
+                    </Button>
+                  </div>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -106,7 +136,7 @@ export default function HomePage() {
                 <span className="text-black font-semibold">
                   Reward: {job.reward}
                 </span>
-                <Button variant="secondary">
+                <Button variant="success">
                   Refer a Candidate
                 </Button>
               </div>
