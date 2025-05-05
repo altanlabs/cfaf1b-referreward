@@ -7,8 +7,8 @@
 }
 
 body {
-  @apply antialiased text-gray-100;
-  background: theme('colors.slate.900');
+  @apply antialiased text-gray-800;
+  background: theme('colors.white');
 }
 
 ::selection {

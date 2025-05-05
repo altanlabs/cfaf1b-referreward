@@ -11,9 +11,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={cn(
-          'rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg p-6',
+          'rounded-xl border border-gray-200 bg-white shadow-sm p-6',
           {
-            'bg-gradient-to-br from-white/10 to-white/5': gradient,
+            'bg-gradient-to-br from-blue-50 to-white': gradient,
           },
           className
         )}
