@@ -8,7 +8,7 @@ const mockJobs = [
     id: 1,
     title: 'Senior Frontend Developer',
     company: 'TechCorp',
-    logo: 'https://ui-avatars.com/api/?name=TechCorp&background=0D8ABC&color=fff',
+    logo: 'https://ui-avatars.com/api/?name=TechCorp&background=000000&color=fff',
     location: 'Remote',
     reward: '$2,000',
     type: 'Full-time',
@@ -18,7 +18,7 @@ const mockJobs = [
     id: 2,
     title: 'Product Manager',
     company: 'InnovateLabs',
-    logo: 'https://ui-avatars.com/api/?name=InnovateLabs&background=FF6B6B&color=fff',
+    logo: 'https://ui-avatars.com/api/?name=InnovateLabs&background=000000&color=fff',
     location: 'New York, USA',
     reward: '$3,000',
     type: 'Full-time',
@@ -28,7 +28,7 @@ const mockJobs = [
     id: 3,
     title: 'DevOps Engineer',
     company: 'CloudTech',
-    logo: 'https://ui-avatars.com/api/?name=CloudTech&background=4CAF50&color=fff',
+    logo: 'https://ui-avatars.com/api/?name=CloudTech&background=000000&color=fff',
     location: 'London, UK',
     reward: '$2,500',
     type: 'Contract',
@@ -44,10 +44,10 @@ export default function HomePage() {
   return (
     <div className="space-y-8">
       <section className="text-center space-y-4">
-        <h1 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800">
+        <h1 className="text-4xl md:text-6xl font-bold text-black">
           Refer. Connect. Earn.
         </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <p className="text-xl text-black/60 max-w-2xl mx-auto">
           Help companies find great talent and earn rewards for successful referrals
         </p>
       </section>
@@ -87,23 +87,23 @@ export default function HomePage() {
                   className="w-12 h-12 rounded-lg"
                 />
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-800">{job.title}</h3>
-                  <p className="text-gray-600">{job.company}</p>
+                  <h3 className="text-xl font-semibold text-black">{job.title}</h3>
+                  <p className="text-black/60">{job.company}</p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-gray-100 rounded-md text-sm text-gray-600">
+                <span className="px-2 py-1 bg-black/5 rounded-md text-sm text-black">
                   {job.location}
                 </span>
-                <span className="px-2 py-1 bg-gray-100 rounded-md text-sm text-gray-600">
+                <span className="px-2 py-1 bg-black/5 rounded-md text-sm text-black">
                   {job.type}
                 </span>
-                <span className="px-2 py-1 bg-gray-100 rounded-md text-sm text-gray-600">
+                <span className="px-2 py-1 bg-black/5 rounded-md text-sm text-black">
                   {job.experience}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-blue-600 font-semibold">
+                <span className="text-black font-semibold">
                   Reward: {job.reward}
                 </span>
                 <Button variant="secondary">

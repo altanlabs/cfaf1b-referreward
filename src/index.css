@@ -3,14 +3,12 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
-  @apply antialiased text-gray-800;
-  background: theme('colors.white');
+  @apply antialiased text-black bg-white;
 }
 
 ::selection {
-  @apply bg-blue-500/30;
-}
+  @apply bg-black/10;
