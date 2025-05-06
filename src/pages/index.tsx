@@ -3,6 +3,8 @@ import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import Select from '@/components/ui/Select';
 import { ShareIcon } from '@/components/icons/ShareIcon';
+import { SortIcon } from '@/components/icons/SortIcon';
+import { useState } from 'react';
 
 const mockJobs = [
   {
@@ -14,6 +16,7 @@ const mockJobs = [
     reward: '$2,000',
     type: 'Full-time',
     experience: 'Senior',
+    postedAt: '2024-01-15',
   },
   {
     id: 2,
@@ -24,6 +27,7 @@ const mockJobs = [
     reward: '$3,000',
     type: 'Full-time',
     experience: 'Mid-Senior',
+    postedAt: '2024-01-20',
   },
   {
     id: 3,
@@ -34,15 +38,47 @@ const mockJobs = [
     reward: '$2,500',
     type: 'Contract',
     experience: 'Senior',
+    postedAt: '2024-01-18',
   },
 ];
 
 const locations = ['All Locations', 'Remote', 'New York, USA', 'London, UK'];
 const jobTypes = ['All Types', 'Full-time', 'Part-time', 'Contract'];
 const experienceLevels = ['All Levels', 'Junior', 'Mid-Level', 'Senior'];
+const sortOptions = [
+  { value: 'recent', label: 'Most Recent' },
+  { value: 'reward-high', label: 'Highest Reward' },
+  { value: 'reward-low', label: 'Lowest Reward' },
+  { value: 'alphabetical', label: 'Alphabetical' },
+];
 
 export default function HomePage() {
-  const handleShare = (job: typeof mockJobs[0]) => {
+  const [sortBy, setSortBy] = useState('recent');
+  const [jobs, setJobs] = useState(mockJobs);
+
+  const handleSort = (value: string) => {
+    setSortBy(value);
+    let sortedJobs = [...jobs];
+    
+    switch (value) {
+      case 'recent':
+        sortedJobs.sort((a, b) => new Date(b.postedAt).getTime() - new Date(a.postedAt).getTime());
+        break;
+      case 'reward-high':
+        sortedJobs.sort((a, b) => parseInt(b.reward.replace(/\D/g, '')) - parseInt(a.reward.replace(/\D/g, '')));
+        break;
+      case 'reward-low':
+        sortedJobs.sort((a, b) => parseInt(a.reward.replace(/\D/g, '')) - parseInt(b.reward.replace(/\D/g, '')));
+        break;
+      case 'alphabetical':
+        sortedJobs.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+    }
+    
+    setJobs(sortedJobs);
+  };
+
+  const handleShare = (job: typeof jobs[0]) => {
     const shareData = {
       title: `${job.title} at ${job.company}`,
       text: `Check out this ${job.title} position at ${job.company}! Referral reward: ${job.reward}`,
@@ -92,11 +128,25 @@ export default function HomePage() {
                 <option key={level} value={level}>{level}</option>
               ))}
             </Select>
+            <div className="flex items-center gap-2 ml-auto">
+              <SortIcon className="w-5 h-5 text-black/60" />
+              <Select
+                value={sortBy}
+                onChange={(e) => handleSort(e.target.value)}
+                className="!w-auto"
+              >
+                {sortOptions.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </Select>
+            </div>
           </div>
         </Card>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {mockJobs.map((job) => (
+          {jobs.map((job) => (
             <Card key={job.id} className="space-y-4">
               <div className="flex items-start gap-3">
                 <img
@@ -137,7 +187,7 @@ export default function HomePage() {
                   Reward: {job.reward}
                 </span>
                 <Button variant="success">
-                  Refer a Candidate
+                  Refer
                 </Button>
               </div>
             </Card>
