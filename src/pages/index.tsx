@@ -4,6 +4,7 @@ import Button from '@/components/ui/Button';
 import Select from '@/components/ui/Select';
 import { ShareIcon } from '@/components/icons/ShareIcon';
 import { SortIcon } from '@/components/icons/SortIcon';
+import { RemoteIcon, BriefcaseIcon, StarIcon } from '@/components/icons/JobIcons';
 import { useState } from 'react';
 
 const mockJobs = [
@@ -96,9 +97,9 @@ export default function HomePage() {
   };
 
   return (
-    <div className="space-y-8">
-      <section className="text-center space-y-4">
-        <h1 className="text-4xl md:text-6xl font-bold text-black">
+    <div className="space-y-12 py-8">
+      <section className="text-center space-y-4 max-w-3xl mx-auto px-4">
+        <h1 className="text-4xl md:text-6xl font-bold text-black tracking-tight">
           Refer. Connect. Earn.
         </h1>
         <p className="text-xl text-black/60 max-w-2xl mx-auto">
@@ -106,10 +107,13 @@ export default function HomePage() {
         </p>
       </section>
 
-      <section className="max-w-5xl mx-auto space-y-4">
-        <Card className="p-4">
+      <section className="max-w-6xl mx-auto px-4 space-y-6">
+        <Card className="p-6">
           <div className="grid gap-4 md:grid-cols-4">
-            <Input placeholder="Search jobs, companies..." className="md:col-span-2" />
+            <Input 
+              placeholder="Search jobs, companies..." 
+              className="md:col-span-2"
+            />
             <Select defaultValue="All Locations">
               {locations.map(location => (
                 <option key={location} value={location}>{location}</option>
@@ -117,13 +121,13 @@ export default function HomePage() {
             </Select>
             <Button>Search Jobs</Button>
           </div>
-          <div className="mt-4 flex gap-4">
-            <Select defaultValue="All Types">
+          <div className="mt-4 flex flex-wrap gap-4 items-center">
+            <Select defaultValue="All Types" className="w-40">
               {jobTypes.map(type => (
                 <option key={type} value={type}>{type}</option>
               ))}
             </Select>
-            <Select defaultValue="All Levels">
+            <Select defaultValue="All Levels" className="w-40">
               {experienceLevels.map(level => (
                 <option key={level} value={level}>{level}</option>
               ))}
@@ -133,7 +137,7 @@ export default function HomePage() {
               <Select
                 value={sortBy}
                 onChange={(e) => handleSort(e.target.value)}
-                className="!w-auto"
+                className="w-44"
               >
                 {sortOptions.map(option => (
                   <option key={option.value} value={option.value}>
@@ -145,45 +149,52 @@ export default function HomePage() {
           </div>
         </Card>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {jobs.map((job) => (
-            <Card key={job.id} className="space-y-4">
-              <div className="flex items-start gap-3">
+            <Card key={job.id} className="flex flex-col">
+              <div className="flex items-start gap-4">
                 <img
                   src={job.logo}
                   alt={job.company}
                   className="w-12 h-12 rounded-md"
                 />
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <h3 className="text-xl font-semibold text-black">{job.title}</h3>
-                      <p className="text-black/60">{job.company}</p>
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-semibold text-black truncate">
+                        {job.title}
+                      </h3>
+                      <p className="text-black/60 text-sm">{job.company}</p>
                     </div>
                     <Button 
                       variant="ghost" 
                       size="sm"
                       onClick={() => handleShare(job)}
-                      className="p-2"
+                      className="p-2 -mr-2 -mt-2"
                     >
                       <ShareIcon className="w-5 h-5" />
                     </Button>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-black/5 rounded-md text-sm text-black">
+
+              <div className="flex flex-wrap gap-2 mt-4">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-black/[0.03] text-black/70 rounded-md text-sm">
+                  <RemoteIcon className="w-4 h-4" />
                   {job.location}
                 </span>
-                <span className="px-2 py-1 bg-black/5 rounded-md text-sm text-black">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-black/[0.03] text-black/70 rounded-md text-sm">
+                  <BriefcaseIcon className="w-4 h-4" />
                   {job.type}
                 </span>
-                <span className="px-2 py-1 bg-black/5 rounded-md text-sm text-black">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-black/[0.03] text-black/70 rounded-md text-sm">
+                  <StarIcon className="w-4 h-4" />
                   {job.experience}
                 </span>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-black font-semibold">
+
+              <div className="flex items-center justify-between mt-6 pt-6 border-t">
+                <span className="inline-flex px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-sm font-medium">
                   Reward: {job.reward}
                 </span>
                 <Button variant="success">

@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon/**/*'],
       manifest: {
-        name: 'Altan',
-        short_name: 'Altan',
-        description: 'Altan Application',
+        name: 'Refery.io',
+        short_name: 'Refery',
+        description: 'Job Referral & Reward Platform',
         theme_color: '#000000',
         background_color: '#ffffff',
         display: 'standalone',
