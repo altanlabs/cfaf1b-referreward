@@ -7,13 +7,21 @@ import './index.css'
 import './App.css'
 import App from './App'
 
-// Initialize auth with a temporary ID - replace with actual users table ID in production
-const USERS_TABLE_ID = 'temp_users_table_id';
+// Auth configuration
+const AUTH_CONFIG = {
+  tableId: 'temp_users_table_id',
+  providers: {
+    google: {
+      clientId: process.env.VITE_GOOGLE_CLIENT_ID,
+      clientSecret: process.env.VITE_GOOGLE_CLIENT_SECRET
+    }
+  }
+};
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HashRouter>
-      <AuthProvider tableId={USERS_TABLE_ID}>
+      <AuthProvider {...AUTH_CONFIG}>
         <App />
       </AuthProvider>
     </HashRouter>
