@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Button from '../ui/Button';
 
 interface LayoutProps {
@@ -7,6 +7,9 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const location = useLocation();
+  const isPostJob = location.pathname === '/post-job';
+
   return (
     <div className="min-h-screen bg-white">
       <nav className="fixed top-0 w-full border-b border-black/[0.08] bg-white/80 backdrop-blur-lg z-50">
@@ -26,11 +29,13 @@ export default function Layout({ children }: LayoutProps) {
             </Link>
           </div>
           <div className="flex items-center gap-4">
-            <Button variant="secondary" size="sm">
-              Sign In
-            </Button>
+            {!isPostJob && (
+              <Button variant="secondary" size="sm" asChild>
+                <Link to="/post-job">Post a Job</Link>
+              </Button>
+            )}
             <Button size="sm">
-              Get Started
+              Sign In
             </Button>
           </div>
         </div>
