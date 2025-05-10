@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Button from '../ui/Button';
+import { useAuth } from '@altanlabs/auth';
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,7 +9,13 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const location = useLocation();
+  const { user, logout } = useAuth();
   const isPostJob = location.pathname === '/post-job';
+  const isAuthPage = ['/sign-in', '/sign-up'].includes(location.pathname);
+
+  if (isAuthPage) {
+    return <>{children}</>;
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -29,14 +36,34 @@ export default function Layout({ children }: LayoutProps) {
             </Link>
           </div>
           <div className="flex items-center gap-4">
-            {!isPostJob && (
+            {!isPostJob && user && (
               <Button variant="secondary" size="sm" asChild>
                 <Link to="/post-job">Post a Job</Link>
               </Button>
             )}
-            <Button size="sm">
-              Sign In
-            </Button>
+            {user ? (
+              <div className="flex items-center gap-4">
+                <Button variant="secondary" size="sm" asChild>
+                  <Link to="/profile">Profile</Link>
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={() => logout()}
+                >
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-4">
+                <Button variant="secondary" size="sm" asChild>
+                  <Link to="/sign-in">Sign In</Link>
+                </Button>
+                <Button size="sm" asChild>
+                  <Link to="/sign-up">Sign Up</Link>
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </nav>
