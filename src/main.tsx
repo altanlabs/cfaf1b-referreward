@@ -9,11 +9,11 @@ import App from './App'
 
 // Auth configuration
 const AUTH_CONFIG = {
-  tableId: 'temp_users_table_id',
+  tableId: import.meta.env.VITE_USERS_TABLE_ID || "users-table-id",
   providers: {
     google: {
-      clientId: process.env.VITE_GOOGLE_CLIENT_ID,
-      clientSecret: process.env.VITE_GOOGLE_CLIENT_SECRET
+      clientId: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+      clientSecret: import.meta.env.VITE_GOOGLE_CLIENT_SECRET
     }
   }
 };
