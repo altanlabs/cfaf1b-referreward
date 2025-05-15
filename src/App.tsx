@@ -7,28 +7,31 @@ import SignInPage from './pages/sign-in';
 import SignUpPage from './pages/sign-up';
 import ProfilePage from './pages/profile';
 import NotFound from './pages/NotFound';
-import { AuthGuard } from './components/auth/AuthGuard';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { AuthProvider } from './contexts/AuthContext';
 
 export default function App() {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/jobs" element={<HomePage />} />
-        <Route path="/post-job" element={
-          <AuthGuard>
-            <PostJobPage />
-          </AuthGuard>
-        } />
-        <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
-        <Route path="/profile" element={
-          <AuthGuard>
-            <ProfilePage />
-          </AuthGuard>
-        } />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/jobs" element={<HomePage />} />
+          <Route path="/post-job" element={
+            <ProtectedRoute>
+              <PostJobPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/sign-in" element={<SignInPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          } />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </AuthProvider>
   );
 }

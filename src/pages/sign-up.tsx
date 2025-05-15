@@ -1,10 +1,13 @@
-import { SignUp, useAuth } from "@altanlabs/auth";
-import { Navigate, useLocation } from "react-router-dom";
+import { Auth } from '@supabase/auth-ui-react';
+import { ThemeSupa } from '@supabase/auth-ui-shared';
+import { Navigate, useLocation } from 'react-router-dom';
+import { supabase } from '../lib/supabase';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function SignUpPage() {
   const { user } = useAuth();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || '/';
 
   if (user) return <Navigate to={from} replace />;
 
@@ -16,24 +19,30 @@ export default function SignUpPage() {
           Join Refery.io to start referring and earning
         </p>
       </div>
-      <SignUp
-        appearance={{ 
-          theme: "light",
-          variables: {
-            colorPrimary: "#000",
-            colorBackground: "#fff",
-            colorInputBackground: "#fff",
-            colorText: "#000",
-            colorTextSecondary: "rgba(0, 0, 0, 0.6)",
-            colorBorder: "rgba(0, 0, 0, 0.1)",
-            borderRadius: "0.5rem",
-          }
-        }}
-        companyName="Refery.io"
-        signInUrl="/sign-in"
-        withSignIn
-        routing="path"
-      />
+      <div className="w-full max-w-md">
+        <Auth
+          supabaseClient={supabase}
+          appearance={{
+            theme: ThemeSupa,
+            variables: {
+              default: {
+                colors: {
+                  brand: '#000000',
+                  brandAccent: '#666666',
+                }
+              }
+            },
+            className: {
+              container: 'w-full',
+              button: 'w-full px-4 py-2 bg-black text-white rounded hover:bg-gray-800',
+              input: 'w-full px-4 py-2 border rounded focus:ring-2 focus:ring-black focus:border-transparent',
+            }
+          }}
+          providers={[]}
+          view="sign_up"
+          redirectTo={`${window.location.origin}/`}
+        />
+      </div>
     </div>
   );
 }
