@@ -7,7 +7,7 @@ import { useAuth } from '../contexts/AuthContext';
 export default function SignUpPage() {
   const { user } = useAuth();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || '/dashboard';
 
   if (user) return <Navigate to={from} replace />;
 
@@ -40,7 +40,7 @@ export default function SignUpPage() {
           }}
           providers={[]}
           view="sign_up"
-          redirectTo={`${window.location.origin}/`}
+          redirectTo={`${window.location.origin}/dashboard`}
         />
       </div>
     </div>

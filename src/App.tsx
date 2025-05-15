@@ -6,6 +6,7 @@ import PostJobPage from './pages/post-job';
 import SignInPage from './pages/sign-in';
 import SignUpPage from './pages/sign-up';
 import ProfilePage from './pages/profile';
+import DashboardPage from './pages/dashboard';
 import NotFound from './pages/NotFound';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
@@ -17,6 +18,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/jobs" element={<HomePage />} />
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          } />
           <Route path="/post-job" element={
             <ProtectedRoute>
               <PostJobPage />
