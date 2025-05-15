@@ -1,53 +1,48 @@
 import { Link } from 'react-router-dom';
 import Button from '@/components/ui/Button';
-import { CheckCircleIcon, ArrowRightIcon } from '@/components/icons/LandingIcons';
-import { MoneyIcon, NetworkIcon, ShieldIcon } from '@/components/icons/FeatureIcons';
+import { CheckCircleIcon, ArrowRightIcon, HandshakeIcon, ShieldCheckIcon, MoneyIcon } from '@/components/icons/LandingIcons';
 
-const benefits = [
-  "Access candidates you won't find on job boards or through agencies.",
-  "Fraction of the cost of traditional recruiters-no retainers, only results.",
-  "Set your own reward to attract more attention from top scouts.",
-  "Full transparency: see reward and commission breakdown upfront.",
-  "GDPR-compliant, global payments via Stripe, and seamless paperwork.",
-  "Upload and relax-we do the rest.",
-];
-
-const steps = [
+const howItWorks = [
   {
-    title: "Upload your job",
-    description: "Set your own reward (as little or as much as you want).",
+    title: "Post a job",
+    description: "Set the role, reward, and probation period.",
+    icon: MoneyIcon,
   },
   {
-    title: "Reach top scouts",
-    description: "Your role is shared with our exclusive network of top tech scouts.",
+    title: "Get trusted referrals",
+    description: "Only vetted founders, VCs, and operators refer.",
+    icon: HandshakeIcon,
   },
   {
-    title: "Get quality referrals",
-    description: "Get high-quality referrals from people who know the industry inside-out.",
-  },
-  {
-    title: "Pay for results",
-    description: "Only pay when you hire and the candidate passes probation. No listing fees.",
-  },
-  {
-    title: "We handle everything",
-    description: "We handle all compliance, contracts, and payments-risk-free and automated.",
+    title: "Hire & pay on success",
+    description: "We hold the reward securely until probation is complete.",
+    icon: CheckCircleIcon,
   },
 ];
 
-const testimonials = [
+const whyRefery = [
   {
-    quote: "We filled our hardest role in 3 weeks, and paid only for success.",
-    author: "Sarah Chen",
-    role: "CTO at TechFlow",
-    image: "https://ui-avatars.com/api/?name=Sarah+Chen&background=000000&color=fff",
+    title: "Trusted Referrals Only",
+    description: "Every candidate is referred by respected operators and founders.",
+    icon: HandshakeIcon,
   },
   {
-    quote: "The quality of candidates from Refery.io's network is unmatched.",
-    author: "Michael Rodriguez",
-    role: "CEO at StartupX",
-    image: "https://ui-avatars.com/api/?name=Michael+Rodriguez&background=000000&color=fff",
+    title: "No Hire, No Fee",
+    description: "You only pay if the candidate is hired and stays.",
+    icon: MoneyIcon,
   },
+  {
+    title: "Fully Compliant",
+    description: "We handle KYC, tax, and global payouts via Stripe.",
+    icon: ShieldCheckIcon,
+  },
+];
+
+const trustFeatures = [
+  "✔ Escrow holds via Stripe",
+  "✔ GDPR compliant",
+  "✔ Legal agreements baked into every referral",
+  "✔ 90-day reward hold, auto-release if no dispute",
 ];
 
 export default function LandingPage() {
@@ -56,26 +51,29 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="relative">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-black/[0.02] to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-teal-50/50 to-transparent" />
           <div className="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
         </div>
         <div className="max-w-6xl mx-auto px-4 pt-12 pb-24">
-          <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-7xl font-bold text-black tracking-tight">
-              Unlock Elite Tech Talent—
-              <span className="text-emerald-600">Only Pay for Results</span>
-            </h1>
-            <p className="mt-6 text-xl text-black/60 max-w-3xl">
-              Tap into a private network of founders, operators, and investors who refer the best candidates—no listing fees, no upfront costs.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button size="lg" className="group">
-                Post a Job (Free)
-                <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button size="lg" variant="secondary">
-                How It Works
-              </Button>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-5xl font-bold text-black tracking-tight">
+                Hire from the people you trust.
+              </h1>
+              <p className="mt-6 text-xl text-black/60">
+                The best candidates aren't on job boards — they're referred by top founders, operators, and investors.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Button size="lg" asChild>
+                  <Link to="/post-job">Post a Job</Link>
+                </Button>
+                <Button size="lg" variant="secondary">
+                  See How It Works
+                </Button>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-teal-100 to-teal-50 shadow-xl" />
             </div>
           </div>
         </div>
@@ -85,147 +83,113 @@ export default function LandingPage() {
       <section className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-black">How It Works</h2>
-          <p className="mt-4 text-black/60 max-w-2xl mx-auto">
-            A simple, transparent process designed for busy hiring managers.
-          </p>
+          <p className="mt-4 text-black/60">Simple, transparent, and effective.</p>
         </div>
-        <div className="grid gap-8">
-          {steps.map((step, index) => (
+        <div className="grid md:grid-cols-3 gap-8">
+          {howItWorks.map((step, index) => (
             <div
               key={step.title}
-              className="flex items-start gap-6 p-6 rounded-xl border border-black/[0.08] bg-white transition-all duration-200 hover:shadow-[0_3px_12px_0_rgba(0,0,0,0.07)] hover:border-black/[0.12]"
+              className="p-6 rounded-xl border border-black/[0.08] bg-white"
             >
-              <div className="flex-none w-12 h-12 rounded-full bg-black text-white flex items-center justify-center text-xl font-semibold">
-                {index + 1}
+              <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center mb-6">
+                <step.icon className="w-6 h-6 text-teal-600" />
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-black">{step.title}</h3>
-                <p className="mt-2 text-black/60">{step.description}</p>
-              </div>
+              <h3 className="text-xl font-semibold text-black">{step.title}</h3>
+              <p className="mt-2 text-black/60">{step.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* Why Refery */}
       <section className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-black">Why Refery.io?</h2>
-          <p className="mt-4 text-black/60 max-w-2xl mx-auto">
-            Built for modern companies who want quality hires without the traditional recruitment overhead.
+          <h2 className="text-3xl font-bold text-black">Why Refery?</h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {whyRefery.map((feature) => (
+            <div
+              key={feature.title}
+              className="p-6 rounded-xl border border-black/[0.08] bg-white"
+            >
+              <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center mb-6">
+                <feature.icon className="w-6 h-6 text-teal-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-black">{feature.title}</h3>
+              <p className="mt-2 text-black/60">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Callout Banner */}
+      <section className="max-w-6xl mx-auto px-4">
+        <div className="bg-black text-white rounded-2xl p-12 text-center">
+          <p className="text-2xl font-bold">
+            We're not a marketplace.<br />
+            We're a high-signal referral network built by people who <em>actually</em> know great talent.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          {benefits.map((benefit) => (
-            <div
-              key={benefit}
-              className="flex items-start gap-4 p-6 rounded-xl border border-black/[0.08] bg-white"
-            >
-              <CheckCircleIcon className="flex-none w-6 h-6 text-emerald-600" />
-              <p className="text-black/80">{benefit}</p>
-            </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-black">Who's referring?</h2>
+          <p className="mt-4 text-xl text-black/60">
+            Top founders, seasoned operators, and respected VCs.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="aspect-square rounded-xl bg-black/5" />
           ))}
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* For Referrers */}
       <section className="max-w-6xl mx-auto px-4">
-        <div className="rounded-2xl border border-black/[0.08] bg-white p-8 md:p-12">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-black">Simple, Transparent Pricing</h2>
-            <p className="mt-4 text-black/60 max-w-2xl mx-auto">
-              No listing fees. No subscriptions. You set the reward, we take a transparent commission.
+        <div className="bg-teal-50 rounded-2xl p-12">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold text-black">Know someone great?</h2>
+            <p className="mt-4 text-xl text-black/60">
+              Refer them, and earn €1,000–€3,000 if they get hired.
             </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <div className="text-black/60">Example Reward</div>
-                <div className="text-4xl font-bold text-black">$3,000</div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-3 border-b border-black/[0.08]">
-                  <span className="text-black/60">Refery.io commission (25%)</span>
-                  <span className="font-semibold">$750</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-black/[0.08]">
-                  <span className="text-black/60">Referrer receives</span>
-                  <span className="font-semibold">$2,250</span>
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center">
-              <p className="text-black/60">
-                Reward is held until probation is passed, then paid out automatically. All payments are handled securely through Stripe.
-              </p>
+            <div className="mt-8">
+              <Button size="lg">Refer Someone</Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Trust & Legal */}
       <section className="max-w-6xl mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.author}
-              className="p-8 rounded-xl border border-black/[0.08] bg-white"
-            >
-              <p className="text-xl text-black/80">"{testimonial.quote}"</p>
-              <div className="mt-6 flex items-center gap-4">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.author}
-                  className="w-12 h-12 rounded-full"
-                />
-                <div>
-                  <div className="font-semibold text-black">{testimonial.author}</div>
-                  <div className="text-black/60">{testimonial.role}</div>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl font-bold text-black">Secure & Compliant</h2>
+            <div className="mt-8 space-y-4">
+              {trustFeatures.map((feature) => (
+                <div key={feature} className="flex items-center gap-4">
+                  <div className="text-xl text-teal-600">{feature}</div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Scout CTA */}
-      <section className="max-w-6xl mx-auto px-4">
-        <div className="relative rounded-2xl overflow-hidden">
-          <div className="absolute inset-0 bg-black" />
-          <div className="absolute h-full w-full bg-[radial-gradient(#ffffff1a_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
-          <div className="relative px-6 py-16 sm:px-12 sm:py-24">
-            <div className="max-w-2xl">
-              <h2 className="text-3xl font-bold text-white">
-                Monetize Your Network—Join the Scout Program
-              </h2>
-              <p className="mt-4 text-lg text-white/70">
-                Are you a founder, operator, or investor with a world-class network? Get paid for every successful intro. Average reward: $2,250 per hire.
-              </p>
-              <div className="mt-8">
-                <Button size="lg" className="bg-white text-black hover:bg-white/90">
-                  Apply to Be a Scout
-                </Button>
-              </div>
+              ))}
             </div>
           </div>
+          <div className="aspect-square rounded-2xl bg-gradient-to-br from-teal-100 to-teal-50" />
         </div>
       </section>
 
       {/* Final CTA */}
       <section className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold text-black">
-          Ready to hire better, faster, and for less?
+          Ready to hire with signal, not noise?
         </h2>
-        <p className="mt-4 text-black/60 max-w-2xl mx-auto">
-          Post your job now—free and risk-free.
-        </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button size="lg" className="group">
-            Post a Job (Free)
-            <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          <Button size="lg" asChild>
+            <Link to="/post-job">Post a Job</Link>
           </Button>
           <Button size="lg" variant="secondary">
-            Become a Scout
+            Talk to Us
           </Button>
         </div>
       </section>
