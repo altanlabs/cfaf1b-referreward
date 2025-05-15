@@ -58,7 +58,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl font-bold text-black tracking-tight">
-                Hire from the people you trust.
+                Hire from people you trust.
               </h1>
               <p className="mt-6 text-xl text-black/60">
                 The best candidates aren't on job boards — they're referred by top founders, operators, and investors.
