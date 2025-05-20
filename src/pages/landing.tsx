@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Button from '@/components/ui/Button';
-import { CheckCircleIcon, ArrowRightIcon, HandshakeIcon, ShieldCheckIcon, MoneyIcon } from '@/components/icons/LandingIcons';
+import { CheckCircleIcon, HandshakeIcon, ShieldCheckIcon, MoneyIcon, ArrowRightIcon } from '@/components/icons/LandingIcons';
 
 const howItWorks = [
   {
@@ -50,32 +50,33 @@ export default function LandingPage() {
     <div className="space-y-24 py-12">
       {/* Hero Section */}
       <section className="relative">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-teal-50/50 to-transparent" />
-          <div className="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
-        </div>
         <div className="max-w-6xl mx-auto px-4 pt-12 pb-24">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold text-black tracking-tight">
-                Hire from people you trust.
-              </h1>
-              <p className="mt-6 text-xl text-black/60">
-                The best candidates aren't on job boards — they're referred by top founders, operators, and investors.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Button size="lg" asChild>
-                  <Link to="/post-job">Post a Job</Link>
-                </Button>
-                <Button size="lg" variant="secondary">
-                  See How It Works
-                </Button>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-teal-100 to-teal-50 shadow-xl" />
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-5xl font-bold text-black tracking-tight">
+              Hire from people you trust.
+            </h1>
+            <p className="mt-6 text-xl text-black/60">
+              The best candidates aren't on job boards — they're referred by top founders, operators, and investors.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Button size="lg" asChild>
+                <Link to="/post-job">Post a Job</Link>
+              </Button>
+              <Button size="lg" variant="secondary">
+                See How It Works
+              </Button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Callout Banner */}
+      <section className="max-w-6xl mx-auto px-4">
+        <div className="bg-black text-white rounded-2xl p-12 text-center">
+          <p className="text-2xl font-bold">
+            We're not a marketplace.<br />
+            We're a high-signal referral network built by people who <em>actually</em> know great talent.
+          </p>
         </div>
       </section>
 
@@ -122,31 +123,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Callout Banner */}
-      <section className="max-w-6xl mx-auto px-4">
-        <div className="bg-black text-white rounded-2xl p-12 text-center">
-          <p className="text-2xl font-bold">
-            We're not a marketplace.<br />
-            We're a high-signal referral network built by people who <em>actually</em> know great talent.
-          </p>
-        </div>
-      </section>
-
-      {/* Social Proof */}
-      <section className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-black">Who's referring?</h2>
-          <p className="mt-4 text-xl text-black/60">
-            Top founders, seasoned operators, and respected VCs.
-          </p>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="aspect-square rounded-xl bg-black/5" />
-          ))}
-        </div>
-      </section>
-
       {/* For Referrers */}
       <section className="max-w-6xl mx-auto px-4">
         <div className="bg-teal-50 rounded-2xl p-12">
@@ -164,18 +140,15 @@ export default function LandingPage() {
 
       {/* Trust & Legal */}
       <section className="max-w-6xl mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-bold text-black">Secure & Compliant</h2>
-            <div className="mt-8 space-y-4">
-              {trustFeatures.map((feature) => (
-                <div key={feature} className="flex items-center gap-4">
-                  <div className="text-xl text-teal-600">{feature}</div>
-                </div>
-              ))}
-            </div>
+        <div>
+          <h2 className="text-3xl font-bold text-black mb-8">Secure & Compliant</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {trustFeatures.map((feature) => (
+              <div key={feature} className="flex items-center gap-4">
+                <div className="text-xl text-teal-600">{feature}</div>
+              </div>
+            ))}
           </div>
-          <div className="aspect-square rounded-2xl bg-gradient-to-br from-teal-100 to-teal-50" />
         </div>
       </section>
 
