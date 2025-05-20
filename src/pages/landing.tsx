@@ -46,6 +46,11 @@ const trustFeatures = [
 ];
 
 export default function LandingPage() {
+  const scrollToHowItWorks = () => {
+    const section = document.getElementById('how-it-works');
+    section?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="space-y-24 py-12">
       {/* Hero Section */}
@@ -62,7 +67,7 @@ export default function LandingPage() {
               <Button size="lg" asChild>
                 <Link to="/post-job">Post a Job</Link>
               </Button>
-              <Button size="lg" variant="secondary">
+              <Button size="lg" variant="secondary" onClick={scrollToHowItWorks}>
                 See How It Works
               </Button>
             </div>
@@ -81,7 +86,7 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works */}
-      <section className="max-w-6xl mx-auto px-4">
+      <section id="how-it-works" className="max-w-6xl mx-auto px-4 scroll-mt-24">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-black">How It Works</h2>
           <p className="mt-4 text-black/60">Simple, transparent, and effective.</p>
