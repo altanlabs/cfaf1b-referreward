@@ -153,7 +153,7 @@ export default function LandingPage() {
           <div className="max-w-2xl">
             <h2 className="text-3xl font-bold text-black">Know someone great?</h2>
             <p className="mt-4 text-xl text-black/60">
-              Refer them, and earn €1,000–€3,000 if they get hired.
+              Refer them, and earn if they get hired.
             </p>
             <div className="mt-8">
               <Button size="lg">Refer Someone</Button>
