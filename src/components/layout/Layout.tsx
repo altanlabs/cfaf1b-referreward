@@ -28,9 +28,6 @@ export default function Layout({ children }: LayoutProps) {
             <Link to="/jobs" className="text-black/60 hover:text-black transition-colors">
               Browse Jobs
             </Link>
-            <Link to="/companies" className="text-black/60 hover:text-black transition-colors">
-              For Companies
-            </Link>
             <Link to="/about" className="text-black/60 hover:text-black transition-colors">
               About
             </Link>
@@ -77,7 +74,6 @@ export default function Layout({ children }: LayoutProps) {
               <h3 className="font-semibold text-black mb-4">Product</h3>
               <ul className="space-y-2">
                 <li><Link to="/jobs" className="text-black/60 hover:text-black">Browse Jobs</Link></li>
-                <li><Link to="/companies" className="text-black/60 hover:text-black">For Companies</Link></li>
                 <li><Link to="/pricing" className="text-black/60 hover:text-black">Pricing</Link></li>
               </ul>
             </div>
