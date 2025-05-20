@@ -109,22 +109,55 @@ export default function LandingPage() {
 
       {/* Why Refery */}
       <section className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-black">Why Refery?</h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {whyRefery.map((feature) => (
-            <div
-              key={feature.title}
-              className="p-6 rounded-xl border border-black/[0.08] bg-white"
-            >
-              <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center mb-6">
-                <feature.icon className="w-6 h-6 text-teal-600" />
+        <div className="max-w-3xl">
+          <div className="inline-block px-4 py-2 bg-emerald-100 rounded-full text-emerald-700 text-sm font-medium mb-6">
+            For Companies
+          </div>
+          <h2 className="text-4xl font-bold text-black mb-6">
+            Find Top Talent Through Trusted Networks
+          </h2>
+          <p className="text-xl text-gray-600 mb-12">
+            Refery.io helps companies tap into high-quality candidate pools through trusted referrals, reducing hiring costs and time-to-fill.
+          </p>
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="text-emerald-600">
+                <CheckCircleIcon className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-semibold text-black">{feature.title}</h3>
-              <p className="mt-2 text-black/60">{feature.description}</p>
+              <p className="text-lg text-gray-700">
+                Access pre-vetted candidates through trusted networks
+              </p>
             </div>
-          ))}
+            <div className="flex items-center gap-3">
+              <div className="text-emerald-600">
+                <CheckCircleIcon className="w-6 h-6" />
+              </div>
+              <p className="text-lg text-gray-700">
+                Reduce hiring costs by up to 40% compared to traditional recruiting
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="text-emerald-600">
+                <CheckCircleIcon className="w-6 h-6" />
+              </div>
+              <p className="text-lg text-gray-700">
+                Improve retention rates with candidates who come through referrals
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="text-emerald-600">
+                <CheckCircleIcon className="w-6 h-6" />
+              </div>
+              <p className="text-lg text-gray-700">
+                Streamline your referral program with our easy-to-use platform
+              </p>
+            </div>
+          </div>
+          <div className="mt-12">
+            <Button size="lg" asChild>
+              <Link to="/post-job">Post a Job</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
