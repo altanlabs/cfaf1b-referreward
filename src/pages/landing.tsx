@@ -65,7 +65,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Button size="lg" asChild>
-                <Link to="/post-job">Post a Job</Link>
+                <Link to="/register">Post a Job</Link>
               </Button>
               <Button size="lg" variant="secondary" onClick={scrollToHowItWorks}>
                 See How It Works
@@ -161,7 +161,7 @@ export default function LandingPage() {
           </div>
           <div className="mt-12">
             <Button size="lg" asChild>
-              <Link to="/post-job">Post a Job</Link>
+              <Link to="/register">Post a Job</Link>
             </Button>
           </div>
         </div>
@@ -278,7 +278,7 @@ export default function LandingPage() {
         </h2>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button size="lg" asChild>
-            <Link to="/post-job">Post a Job</Link>
+            <Link to="/register">Post a Job</Link>
           </Button>
           <Button size="lg" variant="secondary">
             Talk to Us
