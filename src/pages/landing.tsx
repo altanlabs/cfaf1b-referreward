@@ -139,7 +139,7 @@ export default function LandingPage() {
                 <CheckCircleIcon className="w-6 h-6" />
               </div>
               <p className="text-lg text-gray-700">
-                Reduce hiring costs by up to 40% compared to traditional recruiting
+                Reduce hiring costs by up to 95%+ compared to traditional recruiting
               </p>
             </div>
             <div className="flex items-center gap-3">
