@@ -107,7 +107,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Why Refery */}
+      {/* For Companies */}
       <section className="max-w-6xl mx-auto px-4">
         <div className="max-w-3xl">
           <div className="inline-block px-4 py-2 bg-emerald-100 rounded-full text-emerald-700 text-sm font-medium mb-6">
@@ -158,6 +158,81 @@ export default function LandingPage() {
               <Link to="/post-job">Post a Job</Link>
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* For Referrers */}
+      <section className="max-w-6xl mx-auto px-4 mt-24">
+        <div className="max-w-3xl">
+          <div className="inline-block px-4 py-2 bg-emerald-100 rounded-full text-emerald-700 text-sm font-medium mb-6">
+            For Referrers
+          </div>
+          <h2 className="text-4xl font-bold text-black mb-6">
+            Monetize Your Network, Help Your Connections
+          </h2>
+          <p className="text-xl text-gray-600 mb-12">
+            Turn your professional network into a source of income while helping friends and connections find their dream jobs.
+          </p>
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="text-emerald-600">
+                <CheckCircleIcon className="w-6 h-6" />
+              </div>
+              <p className="text-lg text-gray-700">
+                Earn competitive referral bonuses for successful placements
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="text-emerald-600">
+                <CheckCircleIcon className="w-6 h-6" />
+              </div>
+              <p className="text-lg text-gray-700">
+                Track your referrals through every stage of the hiring process
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="text-emerald-600">
+                <CheckCircleIcon className="w-6 h-6" />
+              </div>
+              <p className="text-lg text-gray-700">
+                Build your reputation as a trusted connector in your industry
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="text-emerald-600">
+                <CheckCircleIcon className="w-6 h-6" />
+              </div>
+              <p className="text-lg text-gray-700">
+                Help friends and connections advance their careers
+              </p>
+            </div>
+          </div>
+          <div className="mt-12">
+            <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
+              Become a Referrer
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Refery */}
+      <section className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-black">Why Refery?</h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {whyRefery.map((feature) => (
+            <div
+              key={feature.title}
+              className="p-6 rounded-xl border border-black/[0.08] bg-white"
+            >
+              <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center mb-6">
+                <feature.icon className="w-6 h-6 text-teal-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-black">{feature.title}</h3>
+              <p className="mt-2 text-black/60">{feature.description}</p>
+            </div>
+          ))}
         </div>
       </section>
 
