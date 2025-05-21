@@ -87,23 +87,29 @@ export default function LandingPage() {
 
       {/* How It Works */}
       <section id="how-it-works" className="max-w-6xl mx-auto px-4 scroll-mt-24">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-black">How It Works</h2>
-          <p className="mt-4 text-black/60">Simple, transparent, and effective.</p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {howItWorks.map((step, index) => (
-            <div
-              key={step.title}
-              className="p-6 rounded-xl border border-black/[0.08] bg-white"
-            >
-              <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center mb-6">
-                <step.icon className="w-6 h-6 text-teal-600" />
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div>
+            <h2 className="text-4xl font-bold text-black">How It Works</h2>
+            <p className="mt-4 text-xl text-gray-600">Simple, transparent, and effective.</p>
+          </div>
+          <div className="space-y-6">
+            {howItWorks.map((step, index) => (
+              <div
+                key={step.title}
+                className="p-6 rounded-xl border border-black/[0.08] bg-white"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center flex-shrink-0">
+                    <step.icon className="w-6 h-6 text-teal-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-black">{step.title}</h3>
+                    <p className="mt-2 text-black/60">{step.description}</p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-black">{step.title}</h3>
-              <p className="mt-2 text-black/60">{step.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
